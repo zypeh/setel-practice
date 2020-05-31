@@ -25,3 +25,11 @@ export const responseSchema = {
         }
     }
 }
+
+export const postBodySchema = {
+    type: 'object',
+    required: ['id'],
+    properties: {
+        id: { type: 'string' },
+    }
+}

@@ -9,15 +9,15 @@ import createOrder from './controller/create_order'
 import checkOrder from './controller/check_order'
 import cancelOrder from './controller/cancel_order'
 
-import { responseSchema as response } from './model'
+import { responseSchema as response, postBodySchema as body } from './model'
 
 const db = levelup(encoder(memdown(), { valueEncoding: 'json' }))
 const server = fastify()
 
 server.register(helmet)
-server.get('/order', { schema: { response } }, checkOrder(db))
-server.post('/order', { schema: { response } }, createOrder(db))
-server.put('/order', { schema: { response } }, cancelOrder(db))
+server.get('/order/:order_id', { schema: { response } }, checkOrder(db))
+server.post('/order', { schema: { response, body } }, createOrder(db))
+server.put('/order', { schema: { response, body } }, cancelOrder(db))
 
 const start = async () => {
     try {

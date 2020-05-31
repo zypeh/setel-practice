@@ -1,7 +1,7 @@
 import * as repo from '../repository'
 
 export default (db) => async (request, response) => {
-    const order_id = '1'
+    const order_id = request.body.id
     const order = await repo.get(db, order_id)
 
     if (!order) {

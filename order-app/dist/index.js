@@ -13,9 +13,9 @@ const model_1 = require("./model");
 const db = levelup(encoder(memdown(), { valueEncoding: 'json' }));
 const server = fastify();
 server.register(helmet);
-server.get('/order', { schema: { response: model_1.responseSchema } }, check_order_1.default(db));
-server.post('/order', { schema: { response: model_1.responseSchema } }, create_order_1.default(db));
-server.put('/order', { schema: { response: model_1.responseSchema } }, cancel_order_1.default(db));
+server.get('/order/:order_id', { schema: { response: model_1.responseSchema } }, check_order_1.default(db));
+server.post('/order', { schema: { response: model_1.responseSchema, body: model_1.postBodySchema } }, create_order_1.default(db));
+server.put('/order', { schema: { response: model_1.responseSchema, body: model_1.postBodySchema } }, cancel_order_1.default(db));
 const start = async () => {
     try {
         const PORT = parseInt(process.env.PORT, 10) || 3000;
