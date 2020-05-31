@@ -12,11 +12,14 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "encoding-down": "^6.3.0",
     "fastify": "^2.14.1",
     "fastify-graphql": "^4.0.1",
     "fastify-helmet": "^3.0.2",
     "graphql-tools": "^6.0.4",
-    "make-promises-safe": "^5.1.0"
+    "levelup": "^4.4.0",
+    "make-promises-safe": "^5.1.0",
+    "memdown": "^5.1.0"
   },
   "scripts": {
     "build": "tsc",
