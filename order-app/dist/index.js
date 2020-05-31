@@ -6,17 +6,16 @@ const helmet = require("fastify-helmet");
 const levelup = require("levelup");
 const memdown = require("memdown");
 const encoder = require("encoding-down");
-// import createOrder from './create_order'
-const check_order_1 = require("./check_order");
-// import cancelOrder from './cancel_order'
+const create_order_1 = require("./controller/create_order");
+const check_order_1 = require("./controller/check_order");
+const cancel_order_1 = require("./controller/cancel_order");
 const model_1 = require("./model");
 const db = levelup(encoder(memdown(), { valueEncoding: 'json' }));
 const server = fastify();
 server.register(helmet);
 server.get('/order', { schema: { response: model_1.responseSchema } }, check_order_1.default(db));
-// createOrder(db, server)
-// checkOrder(db, server)
-// cancelOrder(db, server)
+server.post('/order', { schema: { response: model_1.responseSchema } }, create_order_1.default(db));
+server.put('/order', { schema: { response: model_1.responseSchema } }, cancel_order_1.default(db));
 const start = async () => {
     try {
         const PORT = parseInt(process.env.PORT, 10) || 3000;
