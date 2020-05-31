@@ -1,10 +1,14 @@
 import { order_t } from '../model'
+import * as repo from '../repository'
 
 export default (db) => async (request, response) => {
-    const order: order_t = {
-        id: '1',
-        state: 'CREATED'
-    }
+    const order_id = '1'
+    const order = await repo.get(db, order_id)
 
-    return response.code(200).send({ success: true, order })
+
+    if (!order) {
+        return response.code(403).send({ success: false, error: 'Order does not exist' })
+    } else {
+        return response.code(200).send({ success: true, order })
+    }
 }
