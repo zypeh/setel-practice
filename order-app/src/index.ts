@@ -30,4 +30,9 @@ const start = async () => {
     }
 }
 
+export const buildFastifyTest = () => {
+    return server
+}
+
 start()
+

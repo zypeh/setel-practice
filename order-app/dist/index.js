@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.buildFastifyTest = void 0;
 require("make-promises-safe");
 const fastify = require("fastify");
 const helmet = require("fastify-helmet");
@@ -26,6 +27,9 @@ const start = async () => {
         server.log.error(err);
         process.exit(1);
     }
+};
+exports.buildFastifyTest = () => {
+    return server;
 };
 start();
 //# sourceMappingURL=index.js.map
