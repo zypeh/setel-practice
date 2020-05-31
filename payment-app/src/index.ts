@@ -3,12 +3,12 @@ import * as fastify from 'fastify'
 import * as helmet from 'fastify-helmet'
 
 import createPayment from './payment'
-import { responseSchema as response } from './model'
+import { responseSchema as response, postBodySchema as body } from './model'
 
 const server = fastify()
 
 server.register(helmet)
-server.post('/payment', { schema: { response } }, createPayment)
+server.post('/payment', { schema: { response, body } }, createPayment)
 
 const start = async () => {
     try {
