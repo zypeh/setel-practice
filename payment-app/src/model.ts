@@ -1,15 +1,4 @@
 
-export type order_state
-    = 'CREATED'
-    | 'CONFIRMED'
-    | 'CANCELLED'
-    | 'DELIVERED'
-
-export type order_t = {
-    id: string,
-    state: order_state,
-}
-
 export const responseSchema = {
     200: {
         type: 'object',
@@ -18,8 +7,7 @@ export const responseSchema = {
             order: {
                 type: 'object',
                 properties: {
-                    id: { type: 'string' },
-                    state: { type: 'string' },
+                    id: { type: 'string' }
                 }
             }
         }
