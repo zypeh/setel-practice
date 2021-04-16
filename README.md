@@ -1,4 +1,6 @@
-# Setel interview
+# Setel Interview Challange
+
+<details>Is okay bro... they ghosted me after I submitted this repo anyway.</details>
 
 ### Notes
 * We are using embedded persistent memory instead of using ORM and database. So the content will be flushed away when the node instance get terminated.
